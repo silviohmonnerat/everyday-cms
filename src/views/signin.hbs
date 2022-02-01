@@ -1,0 +1,49 @@
+<section class="hero is-light is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-5-tablet is-4-desktop is-4-widescreen">
+          <h1 class="title is-1">The Everyday</h1>
+          <form action="/signin" method="post">
+            <div class="field">
+              <div class="control">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="email@email.com"
+                  class="input"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="*******"
+                  class="input"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <button class="button is-primary">
+                Login
+              </button>
+            </div>
+          </form>
+
+          {{#if message}}
+            <div class="notification is-{{messageClass}} is-light">
+              <button class="delete"></button>
+              {{message}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
