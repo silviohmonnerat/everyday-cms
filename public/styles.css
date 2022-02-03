@@ -21,6 +21,8 @@
   opacity: 0.7;
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
+  -ms-accelerator: true;
+  accent-color: #00d1b2;
 }
 
 /* Mouse-over effects */
