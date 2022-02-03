@@ -12,7 +12,7 @@ export async function ensureAuthenticate(
   response: Response,
   next: NextFunction
 ) {
-  const { "everyday.token": token } = request.cookies;
+  const token = request.cookies["everyday.token"];
 
   if (!token) {
     return response.redirect("signin");

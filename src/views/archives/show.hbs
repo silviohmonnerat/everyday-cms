@@ -1,0 +1,27 @@
+<section class="hero is-primary">
+  <div class="hero-head">
+    {{> navbar}}
+  </div>
+
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title">
+        DATABASE
+      </p>
+      <p class="subtitle">
+        Archive
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-fluid">
+    {{#if message}}
+      <div class="notification is-{{messageClass}} is-light">
+        <button class="delete"></button>
+        {{message}}
+      </div>
+    {{/if}}
+  </div>
+</section>

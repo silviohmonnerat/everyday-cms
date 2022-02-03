@@ -1,0 +1,280 @@
+<section class="hero is-primary">
+  <div class="hero-head">
+    {{> navbar}}
+  </div>
+
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title">
+        DATABASE
+      </p>
+      <p class="subtitle">
+        Create Archive
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    {{#if message}}
+      <div class="notification is-{{messageClass}} is-light">
+        <button class="delete"></button>
+        {{message}}
+      </div>
+    {{/if}}
+
+    <form action="/archives" method="post">
+      <div class="field">
+        <label class="label">Title</label>
+        <div class="control">
+          <input type="text" name="title" class="input" required />
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label">Sound type</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="soundType" required>
+                  <option>Select</option>
+                  <option>Field Recording</option>
+                  <option>Composition (Mixtape, DJ sets, etc.)</option>
+                  <option>Audio sample from media</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label class="label">Content</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="content" required>
+                  <option>Select</option>
+                  <option>Sound-only</option>
+                  <option>Videos</option>
+                  <option>Text</option>
+                  <option>Images</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label">Format Date</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="formatDate" required>
+                  <option>Select</option>
+                  <option>YYYY</option>
+                  <option>YYYY/MM</option>
+                  <option>YYYY/MM/DD</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label class="label">Date</label>
+            <div class="control">
+              <input type="date" name="date" class="input" required />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label">Season</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="season" required>
+                  <option>Select</option>
+                  <option>Spring</option>
+                  <option>Summer</option>
+                  <option>Fall</option>
+                  <option>Winter</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label class="label">Time Of Day</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="TimeOfDay" required>
+                  <option>Select</option>
+                  <option>Dawn</option>
+                  <option>Morning</option>
+                  <option>Afternoon</option>
+                  <option>Evening</option>
+                  <option>Dusk</option>
+                  <option>Night</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-half">
+          <div class="field">
+            <label class="label">Type of location</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="typeOfLocation" required>
+                  <option>Select</option>
+                  <option>Iran</option>
+                  <option>Within/beyond geographical border</option>
+                  <option>Diasporic</option>
+                  <option>Historical</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Location</label>
+        <div class="control">
+          <input type="text" name="location" class="input" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Recordist</label>
+        <div class="control">
+          <input type="text" name="recordist" class="input" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Artist</label>
+        <div class="control">
+          <input type="text" name="artist" class="input" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Length</label>
+        <div class="control">
+          <div class="range">
+            <input 
+              id="rangeInput"
+              class="input-range"
+              type="range" 
+              name="length" 
+              min="0" 
+              max="9999"
+              oninput="amount.value=rangeInput.value"
+              value="0"
+              required 
+            />
+            <input 
+              id="amount" 
+              class="input-range-input input"
+              type="number" 
+              value="0" 
+              min="0" 
+              max="9999" 
+              oninput="rangeInput.value=amount.value" 
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label">Device/Recorder</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="deviceRecorder" required>
+                  <option>Select</option>
+                  <option>Professional Recorders </option>
+                  <option>Smartphones</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label">Format/Quality</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="formatQuality" required>
+                  <option>Select</option>
+                  <option>compressed low-quality</option>
+                  <option>compressed high-quality</option>
+                  <option>uncompressed</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label">Access and License</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select name="accessAndLicense" required>
+                  <option>Select</option>
+                  <option>Download directly with the option of donation (via paypal)</option>
+                  <option>Download after purchase (external link to bandcamp, etc.) </option>
+                  <option>Requesting it through webforms for archival materials</option>
+                  <option>Listen-only or preview</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Tags</label>
+        <div class="control">
+          <input type="text" name="tags" class="input" required />
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button type="submit" class="button is-primary">
+            <span class="icon is-small">
+              <i class="fas fa-check"></i>
+            </span>
+            <span>Save</span>
+          </button>
+        </div>
+
+        <div class="control">
+          <button type="reset" class="button is-danger is-inverted">
+            <span class="icon is-small">
+              <i class="fas fa-times"></i>
+            </span>
+            <span>Cancel</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

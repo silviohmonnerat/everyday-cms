@@ -13,23 +13,24 @@
 
     <div id="navbarMenuHeroA" class="navbar-menu">
       <div class="navbar-end">
-        <a class="navbar-item is-active" href="/dashboard">
-          Dashboard
-        </a>
-
-        <a class="navbar-item" href="/record/create">
-          Add Record
-        </a>
+        <span class="navbar-item">
+          <a
+            class="button is-primary is-light is-focused"
+            href="/archives/create"
+          >
+            <span>Add Archive</span>
+            <span class="icon is-small">
+              <i class="fas fa-plus"></i>
+            </span>
+          </a>
+        </span>
 
         <span class="navbar-item">
-          <form action="/logout" method="get">
-            <button class="button is-light">
-              <span>Sign Out</span>
-              <span class="icon is-small">
-                <i class="fas fa-sign-out-alt"></i>
-              </span>
-            </button>
-          </form>
+          <button class="button is-danger is-outlined">
+            <span class="icon is-small">
+              <i class="fas fa-sign-out-alt"></i>
+            </span>
+          </button>
         </span>
       </div>
     </div>
