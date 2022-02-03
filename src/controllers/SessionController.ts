@@ -12,7 +12,13 @@ interface IAuthenticateClient {
 
 export class SessionController {
   async index(request: Request, response: Response) {
-    response.render("signin");
+    const token = request.cookies["everyday.token"];
+
+    if (token) {
+      return response.redirect("/dashboard");
+    }
+
+    return response.render("/");
   }
 
   async store(request: Request, response: Response) {
@@ -26,7 +32,7 @@ export class SessionController {
       });
 
       if (!user) {
-        return response.render("signin", {
+        return response.render("/", {
           message: "User not found!",
           messageClass: "danger",
         });
@@ -35,7 +41,7 @@ export class SessionController {
       const passwordMatch = await compare(password, user.password);
 
       if (!passwordMatch) {
-        return response.render("signin", {
+        return response.render("/", {
           message: "Password invalid!",
           messageClass: "danger",
         });
@@ -47,9 +53,9 @@ export class SessionController {
 
       response.cookie("everyday.token", token);
 
-      return response.redirect("dashboard");
+      return response.redirect("/dashboard");
     } catch (error) {
-      return response.render("signin", {
+      return response.render("/", {
         message: "Not allow!",
         messageClass: "danger",
       });
@@ -58,6 +64,6 @@ export class SessionController {
 
   async destroy(request: Request, response: Response, next: NextFunction) {
     response.clearCookie("everyday.token");
-    response.redirect("signin");
+    response.redirect("/");
   }
 }

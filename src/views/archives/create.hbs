@@ -25,7 +25,7 @@
       </div>
     {{/if}}
 
-    <form action="/archives" method="post">
+    <form action="/archive-store" method="post">
       <div class="field">
         <label class="label">Title</label>
         <div class="control">
@@ -166,7 +166,7 @@
       <div class="field">
         <label class="label">Artist</label>
         <div class="control">
-          <input type="text" name="artist" class="input" required />
+          <input type="text" name="artist" class="input" placeholder="player, singer, etc..." required />
         </div>
       </div>
 
@@ -253,6 +253,13 @@
         <label class="label">Tags</label>
         <div class="control">
           <input type="text" name="tags" class="input" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">ULR Media</label>
+        <div class="control">
+          <input type="text" name="media" class="input" placeholder="https://google.com" required />
         </div>
       </div>
 

@@ -20,23 +20,24 @@ model User {
 
 model Achive {
   id               Int      @id @default(autoincrement())
-  catalogueNumber  Int      @unique
+  catalogueNumber  Int?     @unique
   soundType        String
   title            String
-  content          String   @db.VarChar(255)
-  date             DateTime @default(now())
+  content          String
+  date             String
   season           String
   timeOfDay        String
   typeOfLocation   String
   location         String
   recordist        String
   artist           String
-  length           BigInt
+  length           Int
   deviceRecorder   String
   formatQuality    String
   accessAndLicense String
   tags             String
-  author_id        Int
+  media            String
+  author_id        Int?
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 

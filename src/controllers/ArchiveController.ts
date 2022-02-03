@@ -1,27 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 
+import { ArchiveData } from "../models/ArchiveModel";
 import { prisma } from "../services/prisma";
-
-interface ArchiveData {
-  id?: number;
-  catalogueNumber?: number;
-  soundType: string;
-  title: string;
-  content: string;
-  date: Date;
-  season: string;
-  timeOfDay: string;
-  typeOfLocation: string;
-  location: string;
-  recordist: string;
-  artist: string;
-  length: number;
-  deviceRecorder: string;
-  formatQuality: string;
-  accessAndLicense: string;
-  tags: string;
-  author_id?: number;
-}
 
 export class ArchiveController {
   /**
@@ -92,23 +72,26 @@ export class ArchiveController {
    */
   async store(request: Request, response: Response) {
     try {
-      const { body } = request;
+      const formData: ArchiveData = request.body;
 
       const catalogueNumber = Math.floor(1000 + Math.random() * 9000);
 
-      const archive = await prisma.achive.create({
-        data: {
-          catalogueNumber,
-          author_id: 1,
-          ...body,
-        },
-      });
+      const data = {
+        catalogueNumber,
+        author_id: 1,
+        ...formData,
+        length: Number(formData.length),
+      };
 
-      return response.render("archives/create", {
-        message: "Archive created successfully!",
-        messageClass: "success",
-        archive,
-      });
+      // const archive = await prisma.achive.create({
+      //   data: {
+      //     catalogueNumber,
+      //     author_id: 1,
+      //     title,
+      //   },
+      // });
+
+      response.render("archives/create");
     } catch (error) {}
   }
 
@@ -131,45 +114,13 @@ export class ArchiveController {
   async update(request: Request, response: Response) {
     try {
       const { id } = request.query;
-      const {
-        soundType,
-        title,
-        content,
-        date,
-        season,
-        timeOfDay,
-        typeOfLocation,
-        location,
-        recordist,
-        artist,
-        length,
-        deviceRecorder,
-        formatQuality,
-        accessAndLicense,
-        tags,
-      }: ArchiveData = request.body;
+      const formData: ArchiveData = request.body;
 
       const archive = await prisma.achive.update({
         where: {
           id: Number(id),
         },
-        data: {
-          soundType,
-          title,
-          content,
-          date,
-          season,
-          timeOfDay,
-          typeOfLocation,
-          location,
-          recordist,
-          artist,
-          length,
-          deviceRecorder,
-          formatQuality,
-          accessAndLicense,
-          tags,
-        },
+        data: {},
       });
 
       if (!archive) {
