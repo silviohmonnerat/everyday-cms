@@ -39,9 +39,10 @@ export class ArchiveValidation {
 
       return next();
     } catch (err) {
-      return response
-        .status(500)
-        .json({ type: err.name, message: err.message });
+      return response.render("archives/create", {
+        type: err.name,
+        message: err.message,
+      });
     }
   }
 }
